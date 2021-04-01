@@ -30,9 +30,9 @@ function App() {
           <Route path="/login">
           <Login />
           </Route>
-          <Route path="/checkOut/:_id">
+          <PrivateRoute path="/checkOut/:_id">
             <CheckOut />
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path="/admin">
             <Admin />
           </PrivateRoute>

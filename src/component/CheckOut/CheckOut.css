@@ -1,3 +1,8 @@
 .checkOut{
     margin-top: 150px;
+    width: 500px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+}
+.checkOut img{
+    width: 400px;
 }

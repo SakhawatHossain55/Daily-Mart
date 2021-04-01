@@ -11,7 +11,7 @@ const Home = () => {
     fetch('https://rocky-brushlands-05849.herokuapp.com/products')
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      // console.log(data);
       setProducts(data)
     })
   }, [])

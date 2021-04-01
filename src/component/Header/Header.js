@@ -1,7 +1,6 @@
 import React from "react";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import logo from '../../icons/Avatar face.png';
 import "./Header.css";
 
 const Header = () => {
@@ -9,7 +8,6 @@ const Header = () => {
 
     <Navbar className="fixed-top" bg="transparent" expand="lg">
         <Container>
-
             <Navbar.Brand as={Link} className="web-name" style={{fontSize: '25px'}} to="/"> FRESH VALLEY</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -23,7 +21,6 @@ const Header = () => {
 
                 </Nav>
             </Navbar.Collapse>
-
         </Container>
     </Navbar>
     
