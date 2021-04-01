@@ -1,0 +1,14 @@
+.float-style{
+    float: right;
+}
+.font-style a{
+    font-size: 40pxs;
+}
+.login-style{
+    background: #71BA58;
+    color: #fff;
+    border-radius: 5px;
+}
+.web-name{
+    font-family: 'Montserrat', sans-serif;
+}
