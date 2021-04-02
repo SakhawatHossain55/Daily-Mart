@@ -15,49 +15,52 @@ import Header from "../Header/Header";
 
 const CheckOut = () => {
   const { _id } = useParams();
-  const [loggedInUser ] = useContext(UserContext);
+  const [loggedInUser] = useContext(UserContext);
   const [product, setProduct] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${_id}`)
+    fetch(`https://rocky-brushlands-05849.herokuapp.com/product/${_id}`)
       .then((res) => res.json())
       .then((data) => {
-
         setProduct(data[0]);
       });
   }, []);
   const [selectedDate, setSelectedDate] = useState({
-    deliveryTime:new Date()
+    deliveryTime: new Date(),
   });
 
   const handleDatePicker = (date) => {
-      const newDate = {...selectedDate};
-      newDate.deliveryTime = date;
+    const newDate = { ...selectedDate };
+    newDate.deliveryTime = date;
     setSelectedDate(selectedDate);
   };
-  let history = useHistory()
+  let history = useHistory();
   const handleCheckOut = () => {
-    const newOrder = {...loggedInUser, ...selectedDate, orderTime: new Date(), ...product}
+    const newOrder = {
+      ...loggedInUser,
+      ...selectedDate,
+      orderTime: new Date(),
+      ...product,
+    };
     console.log(newOrder);
-     
-    fetch('http://localhost:5000/addOrder', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(newOrder)
-    })
-    .then(res => res.json())
-    .then(data => {
-      alert('Your order successfully')
-      
-      history.push("/orders");
-    })
-  };
 
+    fetch("https://rocky-brushlands-05849.herokuapp.com/addOrder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newOrder),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert("Your order successfully");
+
+        history.push("/orders");
+      });
+  };
 
   return (
     <Container>
-        <Header />
+      <Header />
       <div className="checkOut rounded p-5">
-          <h3>Check Out</h3>
+        <h3>Check Out</h3>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -92,14 +95,16 @@ const CheckOut = () => {
                 "aria-label": "change date",
               }}
             />
-
           </Grid>
-          <button as={Link} to="/orders" className="btn btn-success ml-auto" onClick={handleCheckOut}>
-          Check Out
-        </button>
+          <button
+            as={Link}
+            to="/orders"
+            className="btn btn-success ml-auto"
+            onClick={handleCheckOut}
+          >
+            Check Out
+          </button>
         </MuiPickersUtilsProvider>
-
-        
       </div>
     </Container>
   );

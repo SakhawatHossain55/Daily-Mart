@@ -19,7 +19,7 @@ const AddProduct = () => {
             amount: data.amount,
             imageURL: imageURL
         }
-        const url = `http://localhost:5000/addProduct`
+        const url = `https://rocky-brushlands-05849.herokuapp.com/addProduct`
         console.log(eventData)
         fetch(url, {
             method: 'POST',
