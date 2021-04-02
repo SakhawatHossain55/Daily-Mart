@@ -18,43 +18,15 @@ const ManageProduct = (props) => {
 
   return (
     <>
-      <div>
-        <h3>{name}</h3>
-        <h3>Wight : {wight}</h3>
-        <h3>Amount : {amount}</h3>
-        <button onClick={() => deleteProduct(_id)}>delete</button>
-      </div>
-      {/* <>
-        <Table striped bordered hover>
-          <thead>
+
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Wight</th>
-              <th>Amount</th>
+              <td>{name}</td>
+              <td>{wight}</td>
+              <td>{amount}</td>
+              <td className="text-right"><button className="btn btn-danger" onClick={() => deleteProduct(_id)}>Delete</button> <button className="btn btn-primary" >Edit</button></td>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td colSpan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </Table>
-      </> */}
+
+
     </>
   );
 };

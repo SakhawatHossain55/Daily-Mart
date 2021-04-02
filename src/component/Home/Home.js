@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import Header from "../Header/Header";
 import Products from "../Products/Products";
 import "./Home.css";
 
@@ -11,13 +12,14 @@ const Home = () => {
     fetch('https://rocky-brushlands-05849.herokuapp.com/products')
     .then(res => res.json())
     .then(data => {
-      // console.log(data);
+      console.log(data);
       setProducts(data)
     })
   }, [])
-
+  
   return (
     <div className="home">
+      <Header />
       <div className="container mb-5 mt-5">
         <div className="col-md-8 offset-md-2">
           <form action="/addWorks" method="post">
@@ -39,6 +41,7 @@ const Home = () => {
         </div>
       </div>
       <Container>
+      
         <div className="row">
           {products.map( pd => <Products product={pd} key={pd._id}></Products>)}
         </div>

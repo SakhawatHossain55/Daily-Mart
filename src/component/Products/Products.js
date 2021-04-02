@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './Products.css'
 
 const Products = (props) => {
-    // console.log(props.product);
     const {name, _id, amount, imageURL} = props.product;
     const history = useHistory()
 

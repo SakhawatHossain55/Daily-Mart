@@ -1,6 +1,6 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Header from "./component/Header/Header";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Home from "./component/Home/Home";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Orders from "./component/Orders/Orders";
@@ -9,17 +9,21 @@ import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import { createContext, useState } from "react";
 import Login from "./component/Login/Login";
 import CheckOut from "./component/CheckOut/CheckOut";
+import AddProduct from "./component/AddProduct/AddProduct";
+import ProductList from "./component/ProductList/ProductList";
 
 
 export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
+
   return (
+
     <div>
+      
        <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
-        <Header />
         <Switch>
           <Route path="/home">
             <Home />
@@ -36,6 +40,12 @@ function App() {
           <PrivateRoute path="/admin">
             <Admin />
           </PrivateRoute>
+          <Route path="/addProduct">
+            <AddProduct />
+          </Route>
+          <Route path="/productList">
+            <ProductList />
+          </Route>
           <Route path="/">
             <Home />
           </Route>

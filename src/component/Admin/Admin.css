@@ -1,5 +1,7 @@
-.save-style{
+.style{
+    background : green;
+}
+.adminWrapper{
+    background: #161616;
     color: #fff;
-    background-color: #71BA58;
-    border: none;
 }

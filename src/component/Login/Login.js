@@ -6,41 +6,50 @@ import firebaseConfig from "./firebase.config";
 import { UserContext } from "../../App";
 import { useContext } from "react";
 import { useHistory, useLocation } from "react-router";
-import Google from '../../icons/google.png'
-
+import Google from "../../icons/google.png";
+import { Container } from "react-bootstrap";
+import Header from "../Header/Header";
 
 const Login = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const history = useHistory();
-    const location = useLocation();
-    const { from } = location.state || { from: { pathname: "/" } };
+  if (firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+  }
 
-    if (firebase.apps.length === 0) {
-        firebase.initializeApp(firebaseConfig);
-      }
-    
-      const handleGoogleSignIn = () => {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then((result) => {
-            const { displayName, email } = result.user;
-            const signedInUser = { name: displayName, email };
-            setLoggedInUser(signedInUser);
-            history.replace(from);
-
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            console.log(errorMessage);
-          });
-      };
+  const handleGoogleSignIn = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        console.log(result);
+        const { displayName, email, photoURL } = result.user;
+        const signedInUser = { userName: displayName, email, photoURL };
+        setLoggedInUser(signedInUser);
+        history.replace(from);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
   return (
-    <div className="text-center mt-3 login">
-      <button  className="google-button rounded-pill" onClick={handleGoogleSignIn}><img src={Google} alt="google"/>Continue with Google</button>
-    </div>
+    <Container>
+      <Header />
+      <div className="text-center centered mt-3 login">
+        <button
+          className="google-button centered rounded-pill"
+          onClick={handleGoogleSignIn}
+        >
+          <img src={Google} alt="google" />
+          Continue with Google
+        </button>
+      </div>
+    </Container>
   );
 };
 

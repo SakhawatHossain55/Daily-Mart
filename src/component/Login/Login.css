@@ -1,10 +1,18 @@
 
 .google-button{
     width: 450px;
-    height: 50px;
+    /* height: 50px; */
     margin-top: 150px;
 }
 .google-button img{
     width: 40px;
     float: left;
+}
+.centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 15px;
+    padding: 10px;
+    height: auto;
 }
