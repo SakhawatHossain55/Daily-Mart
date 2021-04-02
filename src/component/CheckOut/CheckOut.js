@@ -41,7 +41,7 @@ const CheckOut = () => {
       orderTime: new Date(),
       ...product,
     };
-    console.log(newOrder);
+
 
     fetch("https://rocky-brushlands-05849.herokuapp.com/addOrder", {
       method: "POST",

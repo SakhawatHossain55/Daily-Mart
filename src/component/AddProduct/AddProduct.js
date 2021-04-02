@@ -57,11 +57,11 @@ const AddProduct = () => {
                 <div className="col-lg-9 col-md-8 p-5">
                     <h2>Add Products</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input className="form-control" name="name" defaultValue="Products Name" ref={register} />
+                        <input className="form-control" name="name" placeholder="Products Name" ref={register} />
                         <br/>
-                        <input className="form-control" name="wight" defaultValue="Wight" ref={register} />
+                        <input className="form-control" name="wight" placeholder="Wight" ref={register} />
                         <br/>
-                        <input className="form-control" name="amount" defaultValue="Product Amount" ref={register} />
+                        <input className="form-control" name="amount" placeholder="Product Amount" ref={register} />
                         <br/>
                         <input className="form-control" name="exampleRequired" type="file" onChange={handleImageUpload} />
                         <br/>
