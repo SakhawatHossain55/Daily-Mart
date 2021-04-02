@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner, Row } from "react-bootstrap";
 import Header from "../Header/Header";
 import Products from "../Products/Products";
 import "./Home.css";
@@ -43,7 +43,10 @@ const Home = () => {
       <Container>
       
         <div className="row">
-          {products.map( pd => <Products product={pd} key={pd._id}></Products>)}
+          {
+             products.length == 0 ? <Row className="align-items-center justify-content-center text-center"><Spinner animation="grow" /></Row> : products.map( pd => <Products product={pd} key={pd._id}></Products>)
+
+          }
         </div>
       </Container>
     </div>
